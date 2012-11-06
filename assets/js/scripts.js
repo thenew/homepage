@@ -7,8 +7,8 @@ window.addEvent('domready',function(){
 window.addEvent('load',function(){
 
     document.id('primary').masonry({
-        columnWidth: 150, 
-        itemSelector: '.box' 
+        columnWidth: 145, 
+        itemSelector: '.box'
     });
 
 });
