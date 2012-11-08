@@ -2,38 +2,18 @@
 
 .main {
     margin: 5px auto;
-    width: 910px;
+    /*width: 910px;*/
+    width: 90%;
     height: 100%;
 }
 
 #primary {
-/*    -webkit-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    position: relative;
-*/    height: 100%;
-    padding: 20px;
-    background: #efefef;
-    /*overflow: hidden;*/
+    height: 100%;
 }
 
-.wrap {
-    background: #FFF;
-    border: 0px solid #456;
-    padding: 10px;
-    margin-bottom: 20px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
-
-.wrap:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-}
 
 #primary .box {
     float: left;
@@ -46,22 +26,49 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 140px;
-    min-height: 100px;
+}
+
+.col1,
+.col2,
+.col3 {
+    width: 100%;
+}
+
+.col1 { max-width: 140px; }
+.col2 { max-width: 285px; }
+.col3 { max-width: 430px; }
+
+/* -------------------------------------------------------
+    Style
+   ------------------------------------------------------- */
+
+.block {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+    background: #efefef;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.box {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     background: #0ff1ce;
+    word-wrap: break-word;
 }
 
-.col1 {
-    width: 140px;
+.box strong {
+    font-size: 20px;
 }
-.col2 {
-    width: 285px;
-}
-.col3 {
-    width: 430px;
-}
+
+/* -------------------------------------------------------
+    Tools
+   ------------------------------------------------------- */
 
 ​.cf:before,
 .cf:after {
