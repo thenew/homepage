@@ -109,7 +109,9 @@ var MasonryClass = new Class({
     // set column size, container size, colCount
 	masonrySetup : function() {
 		var s = this.options.itemSelector;
-        this.bricks = s == undefined ? this.brickParent.getChildren() : this.brickParent.getElements(s);
+
+        // shuffle
+        this.bricks.shuffle();
 		
 		if (this.options.columnWidth == undefined) {
 			var b = this.bricks[0];
