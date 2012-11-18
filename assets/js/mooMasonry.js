@@ -53,6 +53,8 @@ var MasonryClass = new Class({
 		}
 		
 		if (this.brickParent.getChildren().length > 0) {
+
+            // Ca commence la
 			this.masonrySetup();
 			this.masonryArrange();
 		
@@ -104,9 +106,10 @@ var MasonryClass = new Class({
 		}
 	},
 
+    // set column size, container size, colCount
 	masonrySetup : function() {
 		var s = this.options.itemSelector;
-		this.bricks = s == undefined ? this.brickParent.getChildren() : this.brickParent.getElements(s);
+        this.bricks = s == undefined ? this.brickParent.getChildren() : this.brickParent.getElements(s);
 		
 		if (this.options.columnWidth == undefined) {
 			var b = this.bricks[0];
@@ -186,6 +189,7 @@ var MasonryClass = new Class({
 				this.placeBrick(brick, this.colCount, this.colY, 1);
 			}
 		} else {
+            this.bricks.shuffle();
 			for (var k = 0; k < this.bricks.length; k++) {
 				var brick = this.bricks[k];
 		
@@ -210,7 +214,7 @@ var MasonryClass = new Class({
 							// get the maximum column height in that group
 							groupY[i] = Math.max(groupY[i], this.colY[i + j]);
 						}
-					}        					
+					}
 					this.placeBrick(brick, groupCount, groupY, colSpan);
 				} // else
 			}
