@@ -2,7 +2,10 @@ $(document.html).removeClass('no-js').addClass('js');
 
 window.addEvent('domready',function(){
 
-    random_shapes("square", $('bg'), 6, 10);
+    // $('bg').setStyles({'background-color': fon_color_rand()})
+    // random_shapes("square", $('bg'), 6, 16);
+    randomGradient($('bg'));
+    random_style_text($$('.box.piouf')[0]);
     $('primary').addClass('liffect-pageLeft');
 
 });

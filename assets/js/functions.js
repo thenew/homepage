@@ -1,3 +1,26 @@
+function randomGradient(el) {
+    if(!el) return;
+    var prefixes = ['-webkit-', '-moz-', '-o-'];
+    var colors = ['rgba(255,255,255,0.05)', 'rgba(0,0,0,0.05)'];
+    prefixes.each(function(prefix,i){
+        var grad = "";
+        var i = 0
+        for (i; i < Number.random(2, 60); i++) {
+            var deg = Number.random(0, 360);
+            var to = Number.random(0, 100);
+            var color = colors[Number.random(0, 1)];
+            // -130deg pour webkit qui utilise l'ancien angle polaire (0deg = est)
+            if(prefix === '-webkit-') deg = (deg.toInt()-130).toString();
+            grad += prefix+'linear-gradient('+deg+'deg,'+color+' '+to+'%, transparent '+to+'%),';
+        };
+        grad += fon_color_rand();
+        el.setStyles({
+            'background': grad
+        });
+    });
+}
+
+
 function fon_color_rand(){
     return "#" + Math.random().toString(16).slice(2, 8);
 }
@@ -67,4 +90,22 @@ function random_shapes(shape, el, min, max) {
         div.inject(el);
         nb--;
     }
+}
+
+function random_style_text(el){
+    var l = el.getElements('span');
+    var fStyle = ['normal', 'italic'];
+    var fWeight = ['normal', 'bold'];
+    var fFamily = ['Comic Sans MS', 'Copperplate Gothic Bold', 'Arial', 'Consolas', 'Corbel', 'Georgia', 'Times New Roman'];
+    var tTransform = ['uppercase', 'lowercase', 'none'];
+    l.each(function(el,i){
+        el.setStyles({
+            'font-size': Number.random(19, 45),
+            'font-style': fStyle[Number.random(0, fStyle.length)],
+            'font-weight': fWeight[Number.random(0, fWeight.length)],
+            'font-family': fFamily[Number.random(0, fFamily.length)],
+            'text-transform': tTransform[Number.random(0, tTransform.length)]
+            // 'color': fon_color_rand()
+        });
+    });
 }

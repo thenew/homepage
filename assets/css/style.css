@@ -142,7 +142,8 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    background: url(../img/bg.png) repeat #efefef;
+    background-image: url(../img/bg.png);
+    background-repeat: repeat;
 }
 
 .block {
@@ -178,21 +179,21 @@ body {
     min-height: 320px;
     background-image: url(../img/logo.png);
     background-size: cover;
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 .box.cocarde {
     height: 100px;
     background-image: url(../img/cocarde.png);
     background-size: cover;
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 .box.photo {
     height: 100px;
     background-image: url(../img/photo.png);
     background-size: cover;
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 .box.twenty4 {
@@ -244,13 +245,21 @@ body {
 .box.re-my {
     height: 105px;
     background-image: url(../img/re-my.png);
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 .box.gg {
     height: 133px;
     background-image: url(../img/gg.png);
-    background-color: transparent;
+    /*background-color: transparent;*/
+}
+
+.box.piouf {
+    text-align: center;
+}
+
+.box.piouf a {
+    color: #222;
 }
 
 /* ----------------------------------------------------------
