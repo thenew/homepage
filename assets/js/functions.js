@@ -21,8 +21,8 @@ function randomGradient(el, options) {
                 color = colors[Number.random(0, 1)];
             // -130deg pour webkit qui utilise l'ancien angle polaire (0deg = est)
             if(prefix === '-webkit-') deg = (deg.toInt()-130).toString();
-            // avoid horizontal lines
-            if(deg > 80 && deg < 100 || deg > 170 && deg < 190) deg = (deg.toInt()+Number.random(30, 60)).toString();
+            // avoid horizontal and vertical lines
+            if(deg > 80 && deg < 100 || deg > 170 && deg < 190 || deg > 260 && deg < 280) deg = (deg.toInt()+Number.random(30, 60)).toString();
             grad += prefix+'linear-gradient('+deg+'deg,'+color+' '+to+'%, transparent '+to+'%),';
         }
         grad += bgColor;
@@ -36,21 +36,23 @@ function fon_color_rand(options){
     if(!options) options = {};
     blackAndWhite = (options.blackAndWhite) ? options.blackAndWhite : false;
 
-    var hex;
     if(blackAndWhite) {
-        hex = Math.random().toString(16).slice(2, 4);
-        hex += hex += hex;
+        var r = Number.random(150,240);
+        return 'rgb('+r+','+r+','+r+')';
     } else {
-        hex = Math.random().toString(16).slice(2, 8);
+        return "#" + Math.random().toString(16).slice(2, 8);
     }
-    return "#" + hex;
 }
 
-function random_shapes(shape, el, min, max) {
-    if(!shape || ("triangle" != shape && "round" != shape)) shape = 'square';
+function random_shapes(el, options) {
     if(!el) el = document.body;
-    if(!min) min = 42;
-    if(!max) max = 100;
+    if(!options) options = {};
+    var shape = (options.shape) ? options.shape : "square",
+        min = (options.min) ? options.min : 42,
+        max = (options.max) ? options.max : 100,
+        sizeRatio = (options.sizeRatio) ? options.sizeRatio : 100,
+        blackAndWhite = (options.blackAndWhite) ? options.blackAndWhite : false;
+
     var w = el.getWidth();
     var h = el.getHeight();
     var nb = Number.random(min, max);
@@ -73,14 +75,16 @@ function random_shapes(shape, el, min, max) {
 
     // generated divs
     while(nb > 0) {
-        var width = 150*(Number.random(10, 100)/10),
-            height = 200*(Number.random(10, 100)/10),
+        var width = (sizeRatio)*(Number.random(10, 100)/10),
+            height = (1.5*sizeRatio)*(Number.random(10, 100)/10),
             left = w*(Number.random(0, 100)/100)-width,
             bottom = h*(Number.random(0, 100)/100),
-            color = fon_color_rand(),
+            color = fon_color_rand({blackAndWhite: blackAndWhite}),
             special_shape_style = {};
+            console.log(left);
 
         var shape_style = {
+            'position': 'absolute',
             'bottom': bottom,
             'left': left,
             '-webkit-transform': 'rotate('+Number.random(0, 179)+'deg)',
