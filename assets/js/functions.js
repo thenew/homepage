@@ -1,28 +1,49 @@
-function randomGradient(el) {
+
+// TODO: don't loop whitin prefixes
+
+function randomGradient(el, options) {
     if(!el) return;
-    var prefixes = ['-webkit-', '-moz-', '-o-'];
-    var colors = ['rgba(255,255,255,0.05)', 'rgba(0,0,0,0.05)'];
+    if(!options) options = {};
+    blackAndWhite = (options.blackAndWhite) ? options.blackAndWhite : false;
+    nbMin = (options.nbMax) ? options.nbMax : 2;
+    nbMax = (options.nbMax) ? options.nbMax : 40;
+    var nb = Number.random(nbMin, nbMax),
+        prefixes = ['-webkit-', '-moz-', '-o-'],
+        colors = ['rgba(255,255,255,0.05)', 'rgba(0,0,0,0.05)'],
+        bgColor = fon_color_rand({blackAndWhite: blackAndWhite});
+
     prefixes.each(function(prefix,i){
-        var grad = "";
-        var i = 0
-        for (i; i < Number.random(2, 60); i++) {
-            var deg = Number.random(0, 360);
-            var to = Number.random(0, 100);
-            var color = colors[Number.random(0, 1)];
+        var grad = "",
+            count = 0;
+        for (count; count < nb ; count++) {
+            var deg = Number.random(2, 358),
+                to = Number.random(0, 100),
+                color = colors[Number.random(0, 1)];
             // -130deg pour webkit qui utilise l'ancien angle polaire (0deg = est)
             if(prefix === '-webkit-') deg = (deg.toInt()-130).toString();
+            // avoid horizontal lines
+            if(deg > 80 && deg < 100 || deg > 170 && deg < 190) deg = (deg.toInt()+Number.random(30, 60)).toString();
             grad += prefix+'linear-gradient('+deg+'deg,'+color+' '+to+'%, transparent '+to+'%),';
-        };
-        grad += fon_color_rand();
+        }
+        grad += bgColor;
         el.setStyles({
             'background': grad
         });
     });
 }
 
+function fon_color_rand(options){
+    if(!options) options = {};
+    blackAndWhite = (options.blackAndWhite) ? options.blackAndWhite : false;
 
-function fon_color_rand(){
-    return "#" + Math.random().toString(16).slice(2, 8);
+    var hex;
+    if(blackAndWhite) {
+        hex = Math.random().toString(16).slice(2, 4);
+        hex += hex += hex;
+    } else {
+        hex = Math.random().toString(16).slice(2, 8);
+    }
+    return "#" + hex;
 }
 
 function random_shapes(shape, el, min, max) {
@@ -37,13 +58,13 @@ function random_shapes(shape, el, min, max) {
     // Defaults and shapes styles
     var shape_style_default = {};
     if("triangle" == shape) {
-        var shape_style_default = {
+        shape_style_default = {
             'height': 0,
             'border': '20px solid transparent',
             'border-right-color': '#fff'
         };
     } else if("round" == shape) {
-        var shape_style_default = {
+        shape_style_default = {
             '-webkit-border-radius': '50%',
             '-moz-border-radius': '50%',
             'border-radius': '50%'
@@ -52,11 +73,12 @@ function random_shapes(shape, el, min, max) {
 
     // generated divs
     while(nb > 0) {
-        var width = 150*(Number.random(10, 100)/10);
-        var height = 200*(Number.random(10, 100)/10);
-        var left = w*(Number.random(0, 100)/100)-width;
-        var bottom = h*(Number.random(0, 100)/100);
-        var color = fon_color_rand();
+        var width = 150*(Number.random(10, 100)/10),
+            height = 200*(Number.random(10, 100)/10),
+            left = w*(Number.random(0, 100)/100)-width,
+            bottom = h*(Number.random(0, 100)/100),
+            color = fon_color_rand(),
+            special_shape_style = {};
 
         var shape_style = {
             'bottom': bottom,
@@ -67,18 +89,18 @@ function random_shapes(shape, el, min, max) {
             '-o-transform': 'rotate('+Number.random(0, 179)+'deg)',
             'transform': 'rotate('+Number.random(0, 179)+'deg)',
             'opacity': Number.random(2, 8)/10
-        }
+        };
 
         if("triangle" == shape) {
-            var special_shape_style = {
+            special_shape_style = {
                 'border-width': width,
-                'border-right-color': color,
+                'border-right-color': color
             };
         } else {
-            var special_shape_style = {
-            'width': width,
-            'height': height,
-            'background': color,
+            special_shape_style = {
+                'width': width,
+                'height': height,
+                'background': color
             };
         }
         shape_style = Object.merge(shape_style, special_shape_style);
