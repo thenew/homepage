@@ -1,7 +1,9 @@
 @charset "UTF-8";
+
 /* ----------------------------------------------------------
    Fonts
    ------------------------------------------------------- */
+
 @font-face {
     font-family: 'EraserRegular';
     src: url('../fonts/EraserRegular-webfont.eot');
@@ -89,7 +91,16 @@ body {
     z-index: 2;
     width: 90%;
     height: 100%;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
+}
+
+.logo {
+    width: 100%;
+    height: 150px;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 
 #primary {
@@ -99,11 +110,10 @@ body {
 #primary .box {
     float: left;
     margin: 0 10px 10px 0;
-    /*padding: 20px;*/
 }
 
 #primary .box > * {
-    padding: 20px;
+    padding: 15px;
 }
 
 .box {
@@ -159,7 +169,6 @@ body {
     -moz-border-radius: 1.9px;
     border-radius: 1.9px;
     /*background: #fff;*/
-    /*background: rgba(255,255,255,.9999);*/
     word-wrap: break-word;
     background-repeat: no-repeat;
     background-position: center;
@@ -174,13 +183,6 @@ body {
 
 /* Boxes
    ----------------------- */
-
-.box.logo {
-    min-height: 320px;
-    background-image: url(../img/logo.png);
-    background-size: cover;
-    /*background-color: transparent;*/
-}
 
 .box.cocarde {
     height: 100px;
@@ -245,19 +247,16 @@ body {
 .box.re-my {
     height: 105px;
     background-image: url(../img/re-my.png);
-    /*background-color: transparent;*/
 }
 
 .box.gg {
     height: 133px;
     background-image: url(../img/gg.png);
-    /*background-color: transparent;*/
 }
 
 .box.twitter {
     height: 100px;
     background-image: url(../img/twitter.png);
-    /*background-color: transparent;*/
     text-align: left;
     text-indent: -9999px;
     overflow: hidden;
@@ -266,14 +265,24 @@ body {
 .box.github {
     height: 100px;
     background-image: url(../img/blacktocat.png);
-    /*background-color: transparent;*/
     text-align: left;
     text-indent: -9999px;
     overflow: hidden;
 }
 
+.box.fondations {
+    height: 100px;
+    background-image: url(../img/fondations.png);
+}
+
+.box.inventory {
+    height: 100px;
+    background-image: url(../img/inventory.png);
+}
+
 .box.piouf {
     text-align: center;
+    background-color: #fff;
 }
 
 .box.piouf a {
@@ -362,9 +371,4 @@ body {
 
 .cf:after {
     clear: both;
-}{
-    *zoog/logo.png1 center no-repeat;;
-}
-.cocarde{
-    *zoog/logococardepng1 center no-repeat;;
 }
