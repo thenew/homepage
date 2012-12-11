@@ -27,7 +27,6 @@
             <div id="primary" class="cf">
                 <!-- <div class="box col3"><p>Front-end developer @ <a href="http://www.colorz.fr" target="_blank">Colorz</a></p></div> -->
                 <div class="box col1 cocarde"></div>
-                <!-- <div class="box col1 photo"></div> -->
                 <div class="box col3 twenty4"><a href="http://thenew.fr/24" class="cover" target="_blank"></a></div>
                 <div class="box col3 charte-css"><a href="http://css.thenew.fr" class="cover" target="_blank">Charte CSS</a></div>
                 <div class="box col3 lab"><a href="http://lab.thenew.fr" class="cover" target="_blank"><span>Lab</span></a></div>
@@ -42,6 +41,6 @@
         </div>
     </div>
 </div>
-
+<?php include 'partials/ga.html'; ?>
 </body>
 </html>
